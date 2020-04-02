@@ -1,4 +1,3 @@
 # Ranked Bottom Navigation Bar
 
-<img src="gitimg/img1.png" width="300" height="300">
-
+<img src="gitimg/img1.png" width="300">
