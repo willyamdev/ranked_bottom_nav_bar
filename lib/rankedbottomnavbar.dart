@@ -2,18 +2,22 @@ import 'package:flutter/material.dart';
 
 class RankedBottomNavBar extends StatefulWidget {
   List<Icon> items;
+  final ValueChanged<int> onItemTap;
   Color backgroundColor;
   Color iconColor;
   Color rankedColor;
   double height;
+  double borderRadius;
 
-  // ******* MAX NAVBAR ITENS 3 ********
+  // ******* MAX NAVBAR ITENS RECOMENDED 3 ********
   RankedBottomNavBar(
       {@required this.items,
+      @required this.onItemTap,
       this.backgroundColor = Colors.black,
       this.iconColor = Colors.white,
       this.rankedColor = Colors.blue,
-      this.height = 80});
+      this.height = 80,
+      this.borderRadius = 32});
 
   @override
   _RankedBottomNavBarState createState() => _RankedBottomNavBarState();
@@ -30,7 +34,8 @@ class _RankedBottomNavBarState extends State<RankedBottomNavBar> {
       decoration: BoxDecoration(
           color: widget.backgroundColor,
           borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(32), topRight: Radius.circular(32))),
+              topLeft: Radius.circular(widget.borderRadius),
+              topRight: Radius.circular(widget.borderRadius))),
       child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: widget.items.map((item) {
@@ -41,6 +46,7 @@ class _RankedBottomNavBarState extends State<RankedBottomNavBar> {
                 setState(() {
                   selected = itemIndex;
                 });
+                widget.onItemTap(selected);
               },
               child: _navItem(item, selected == itemIndex),
             );
@@ -76,8 +82,3 @@ class _RankedBottomNavBarState extends State<RankedBottomNavBar> {
         ));
   }
 }
-
-// class NavItens {
-//   final Icon icon;
-//   NavItens(this.icon);
-// }
