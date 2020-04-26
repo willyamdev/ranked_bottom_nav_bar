@@ -8,6 +8,7 @@ class RankedBottomNavBar extends StatefulWidget {
   Color rankedColor;
   double height;
   double borderRadius;
+  Duration animationDuration;
 
   // ******* MAX NAVBAR ITENS RECOMENDED 3 ********
   RankedBottomNavBar(
@@ -17,7 +18,8 @@ class RankedBottomNavBar extends StatefulWidget {
       this.iconColor = Colors.white,
       this.rankedColor = Colors.blue,
       this.height = 80,
-      this.borderRadius = 32});
+      this.borderRadius = 32,
+      this.animationDuration = const Duration(milliseconds: 150)});
 
   @override
   _RankedBottomNavBarState createState() => _RankedBottomNavBarState();
@@ -69,7 +71,7 @@ class _RankedBottomNavBarState extends State<RankedBottomNavBar> {
               ),
             ),
             AnimatedContainer(
-              duration: Duration(milliseconds: 150),
+              duration: widget.animationDuration,
               height: isSelected ? 30 : 10,
               width: 55,
               decoration: BoxDecoration(
